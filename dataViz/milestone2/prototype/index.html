@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second-Degree Connection Explorer</title>
+  <link rel="stylesheet" href="./styles.css?v=onehop10">
+</head>
+<body>
+  <div class="shell">
+    <header id="top" class="hero panel">
+      <div class="hero-main">
+        <p class="eyebrow">Milestone 2 Prototype</p>
+        <h1>See the people you can already reach through one trusted friend.</h1>
+        <p class="lead">
+          Explore the second-degree layer around a user and see which bridge friends open the strongest nearby connections.
+        </p>
+        <div id="overview-strip" class="overview-strip"></div>
+      </div>
+
+      <aside class="hero-side">
+        <article class="hero-preview">
+          <div class="hero-preview-copy">
+            <p class="eyebrow">One Hop Away</p>
+            <h2>The same orbit drives the whole experience</h2>
+            <p class="note-copy">
+              The hero preview, the main explorer, and the lower analysis all revolve around the same idea: one user at the center, bridge friends on the first ring, and reachable candidates on the second.
+            </p>
+          </div>
+          <div id="hero-visual" class="hero-visual"></div>
+        </article>
+
+        <article class="note-card">
+          <p class="eyebrow">Current Evidence</p>
+          <h2>What is live right now</h2>
+          <p id="caveat-text" class="note-copy"></p>
+          <div id="summary-chips" class="summary-chips"></div>
+        </article>
+      </aside>
+    </header>
+
+    <section class="panel narrative-band">
+      <div class="section-head">
+        <p class="eyebrow">Reading Guide</p>
+        <h2>What the audience should notice first</h2>
+      </div>
+      <div id="insight-list" class="insight-list"></div>
+    </section>
+
+    <section id="explorer" class="panel explorer-panel">
+      <div class="explorer-head">
+        <div class="explorer-copy">
+          <p class="eyebrow">Interactive Prototype</p>
+          <h2 id="stage-title">From one person to a reachable neighborhood</h2>
+          <p class="explorer-lead">
+            Select a user, filter the second ring, and follow how bridges and candidates respond together.
+          </p>
+        </div>
+        <div id="stage-metrics" class="stage-metrics"></div>
+      </div>
+
+      <div class="control-deck">
+        <article class="control-card">
+          <div class="section-head compact">
+            <p class="eyebrow">Control Room</p>
+            <h3>Set up the case</h3>
+          </div>
+
+          <label class="field">
+            <span>Ego user</span>
+            <select id="case-select"></select>
+          </label>
+
+          <div class="field">
+            <span>Filter logic</span>
+            <div class="mode-toggle" id="filter-mode"></div>
+          </div>
+
+          <div class="field">
+            <span>Second-degree filters</span>
+            <div class="filter-list" id="filter-list"></div>
+          </div>
+
+          <label class="field">
+            <span>Visible candidate cap</span>
+            <div class="range-row">
+              <input id="topn-range" type="range" min="6" max="16" step="1" value="12">
+              <strong id="topn-value">12</strong>
+            </div>
+          </label>
+        </article>
+
+        <article class="context-card">
+          <div class="section-head compact">
+            <p class="eyebrow">Ego Snapshot</p>
+            <h3>Selected user</h3>
+          </div>
+          <div id="ego-card" class="ego-card"></div>
+        </article>
+
+        <article class="context-card">
+          <div class="section-head compact">
+            <p class="eyebrow">Storyline</p>
+            <h3>How to read this graph</h3>
+          </div>
+          <div id="storyline" class="storyline"></div>
+        </article>
+      </div>
+
+      <div class="graph-stage-grid">
+        <div class="graph-wrap">
+          <div id="graph" class="graph"></div>
+          <div id="graph-hint" class="graph-hint"></div>
+        </div>
+
+        <aside class="graph-side">
+          <div class="graph-side-block">
+            <div class="section-head compact">
+              <p class="eyebrow">Spotlight</p>
+              <h3>Selected candidate</h3>
+            </div>
+            <div id="candidate-detail" class="stage-detail-column"></div>
+          </div>
+
+          <div class="graph-side-block">
+            <div class="section-head compact">
+              <p class="eyebrow">Reasoning</p>
+              <h3>Why this candidate matters</h3>
+            </div>
+            <div id="path-explainer" class="stage-detail-column"></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="explorer-lower">
+        <article class="explorer-list-block">
+          <div class="section-head compact">
+            <p class="eyebrow">Bridge Friends</p>
+            <h3>Who carries the connection outward</h3>
+          </div>
+          <div id="bridge-list" class="bridge-list"></div>
+        </article>
+
+        <article class="explorer-list-block">
+          <div class="section-head compact">
+            <p class="eyebrow">Ranking</p>
+            <h3>Visible candidates</h3>
+          </div>
+          <div id="candidate-list" class="candidate-list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="atlas" class="panel atlas-header">
+      <div class="atlas-copy">
+        <p class="eyebrow">Data Atlas</p>
+        <h2>What the full graph says beyond the interactive cases</h2>
+        <p class="note-copy">
+          The explorer focuses on exemplar ego users. This section keeps the same story but zooms out: how large the second ring becomes, where shared-trait overlap actually appears, and how the selected case compares with the broader dataset.
+        </p>
+      </div>
+      <div class="atlas-side">
+        <div id="atlas-focus" class="atlas-focus"></div>
+        <div id="quality-grid" class="quality-grid"></div>
+      </div>
+    </section>
+
+    <section class="atlas-grid">
+      <article class="panel chart-panel wide">
+        <div class="section-head">
+          <p class="eyebrow">Case Comparison</p>
+          <h2>How the exemplar users differ</h2>
+        </div>
+        <div id="chart-cases" class="chart"></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-head">
+          <p class="eyebrow">Reach</p>
+          <h2>Direct-friend degree</h2>
+        </div>
+        <div id="chart-degree" class="chart"></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-head">
+          <p class="eyebrow">Reach</p>
+          <h2>Second-degree reach</h2>
+        </div>
+        <div id="chart-second" class="chart"></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-head">
+          <p class="eyebrow">Matching</p>
+          <h2>Shared-trait overlap</h2>
+        </div>
+        <div id="chart-shared" class="chart"></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-head">
+          <p class="eyebrow">Audience</p>
+          <h2>Age groups</h2>
+        </div>
+        <div id="chart-age" class="chart"></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-head">
+          <p class="eyebrow">Audience</p>
+          <h2>Top countries</h2>
+        </div>
+        <div id="chart-countries" class="chart"></div>
+      </article>
+    </section>
+  </div>
+
+  <script src="./data.js?v=onehop10"></script>
+  <script src="./app.js?v=onehop10"></script>
+</body>
+</html>

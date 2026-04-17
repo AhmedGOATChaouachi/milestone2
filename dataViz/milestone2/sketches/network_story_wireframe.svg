@@ -1,0 +1,35 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#F6F1EA"/>
+  <rect x="32" y="28" width="1216" height="88" rx="22" fill="#FFFDF9" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="64" y="64" fill="#1B1B1B" font-size="30" font-family="Georgia, serif">Story mode: A reaches C through B</text>
+  <text x="64" y="92" fill="#565656" font-size="16" font-family="Georgia, serif">The key narrative is not just reachability, but meaningful reachability through shared traits.</text>
+
+  <rect x="32" y="140" width="384" height="548" rx="22" fill="#FFFDF9" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="60" y="178" fill="#1B1B1B" font-size="24" font-family="Georgia, serif">1. Choose an ego user</text>
+  <circle cx="224" cy="340" r="34" fill="#2F6B5D" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="213" y="347" fill="#FFFDF8" font-size="18" font-family="Courier New, monospace">A</text>
+  <text x="78" y="560" fill="#565656" font-size="15" font-family="Courier New, monospace">User card shows country, age group, degree</text>
+
+  <rect x="448" y="140" width="384" height="548" rx="22" fill="#FFFDF9" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="476" y="178" fill="#1B1B1B" font-size="24" font-family="Georgia, serif">2. Reveal the bridge</text>
+  <circle cx="544" cy="340" r="28" fill="#2F6B5D" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="640" cy="340" r="22" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="744" cy="340" r="18" fill="#D98C5F" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="544" y1="340" x2="640" y2="340" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="640" y1="340" x2="744" y2="340" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="536" y="347" fill="#FFFDF8" font-size="16" font-family="Courier New, monospace">A</text>
+  <text x="634" y="346" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">B</text>
+  <text x="738" y="346" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">C</text>
+  <text x="496" y="558" fill="#565656" font-size="15" font-family="Courier New, monospace">B is the mutual friend that turns C into a reachable candidate</text>
+
+  <rect x="864" y="140" width="384" height="548" rx="22" fill="#FFFDF9" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="892" y="178" fill="#1B1B1B" font-size="24" font-family="Georgia, serif">3. Explain why C matters</text>
+  <rect x="900" y="228" width="312" height="66" rx="14" fill="#ECE2D3"/>
+  <rect x="900" y="314" width="312" height="66" rx="14" fill="#ECE2D3"/>
+  <rect x="900" y="400" width="312" height="66" rx="14" fill="#ECE2D3"/>
+  <text x="922" y="258" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">same country</text>
+  <text x="922" y="344" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">same age group</text>
+  <text x="922" y="430" fill="#B26A3F" font-size="16" font-family="Courier New, monospace">same music taste (planned)</text>
+  <text x="922" y="454" fill="#B26A3F" font-size="13" font-family="Courier New, monospace">needs user listening table</text>
+  <text x="896" y="564" fill="#565656" font-size="15" font-family="Courier New, monospace">Result: C becomes a more meaningful introduction</text>
+</svg>

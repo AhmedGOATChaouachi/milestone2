@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milestone 1 - Data Visualization</title>
+  <style>
+    :root {
+      --paper: #fbf8f1;
+      --ink: #1c1b19;
+      --muted: #5a5750;
+      --accent: #315c52;
+      --line: #d8d1c3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ece6da;
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      line-height: 1.42;
+    }
+
+    .page {
+      width: min(980px, calc(100vw - 32px));
+      margin: 24px auto;
+      padding: 32px;
+      background: var(--paper);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 10px;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 22px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    p, li {
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.76rem;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 860px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat {
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      margin: 14px 0;
+      background: rgba(49, 92, 82, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(49, 92, 82, 0.12);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="eyebrow">Milestone 1 / Data Visualization</div>
+    <h1>Second-Degree Connection Value in the Last.fm UK Graph</h1>
+    <p class="meta">Shin Urech (327245) / Joyti Goel (325374) / Ahmed Chaouachi (346447)</p>
+    <p class="lead">
+      The corrected project direction is to visualize the value of second-degree connections: not only who a person already knows, but who becomes reachable through one mutual friend and why that new connection might matter.
+    </p>
+
+    <div class="grid">
+      <div class="stat">
+        <strong>75,969</strong>
+        <span>connected users</span>
+      </div>
+      <div class="stat">
+        <strong>389,639</strong>
+        <span>unique undirected friendships</span>
+      </div>
+      <div class="stat">
+        <strong>61,826</strong>
+        <span>users with a usable age group</span>
+      </div>
+      <div class="stat">
+        <strong>2 hops</strong>
+        <span>core design unit</span>
+      </div>
+    </div>
+
+    <h2>Dataset</h2>
+    <p>
+      Primary dataset: <strong>Last.fm UK User Graph Dataset</strong>, published on Zenodo by the University of Pisa / CNR. The local project workspace contains the files <code>network</code>, <code>UsersData_anonymized</code>, <code>ArtistTags</code>, <code>ArtistsMap</code>, and <code>Tags</code>.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Role in the project</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>network</code></td>
+          <td>Friendship edge list. After cleaning duplicate and reciprocal rows, it yields 389,639 unique undirected friendships.</td>
+        </tr>
+        <tr>
+          <td><code>UsersData_anonymized</code></td>
+          <td>User-level demographics: age, gender, country, plus registration date and playcount metadata.</td>
+        </tr>
+        <tr>
+          <td><code>ArtistTags</code> and <code>ArtistsMap</code></td>
+          <td>Artist and tag metadata. Useful for future music-taste enrichment, but not sufficient on their own to infer user-level taste.</td>
+        </tr>
+        <tr>
+          <td><code>Tags</code></td>
+          <td>Global tag counts. Useful for understanding the tag vocabulary, but not enough to match taste to individual users.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Data Quality Assessment</h2>
+    <p>
+      The dataset is strong enough for a network-centered project: it is anonymized, well structured, and the friendship graph is explicit rather than inferred. The user table gives us directly usable attributes for age and country-based matching.
+    </p>
+    <div class="callout">
+      <strong>Important correction:</strong> the current local files do <em>not</em> include a user-to-artist listening table. That means we cannot compute each user's dominant genre from the available workspace alone. Music-taste matching remains part of the vision, but it is a future extension that requires the missing listening-history file.
+    </div>
+
+    <h2>Preprocessing Requirements</h2>
+    <ul>
+      <li>Deduplicate the friendship graph, because the raw file contains reciprocal repeats.</li>
+      <li>Clean missing ages and convert valid ages into broader age groups for matching.</li>
+      <li>Standardize country codes and mark incomplete user profiles clearly.</li>
+      <li>Compute second-degree candidate sets for each user by expanding one hop beyond direct friends.</li>
+      <li>Rank candidate second-degree matches by shared country, shared age group, and mutual-friend count.</li>
+    </ul>
+
+    <h2>What We Are Trying To Show</h2>
+    <p>
+      The visualization centers on a simple but powerful social idea: our immediate network is only part of the story. Through one mutual friend, we can reach a much wider set of people, and some of those people are more meaningful than others because they share traits with us.
+    </p>
+    <p>
+      In the corrected implementation, those shared traits are currently <strong>country</strong> and <strong>age group</strong>, because those are the traits supported directly by the available files. The final vision still includes shared music taste, but that part is explicitly deferred until the missing listening data is added.
+    </p>
+
+    <h2>Project Overview</h2>
+    <ul>
+      <li>Select one person as the ego node.</li>
+      <li>Highlight their direct friends as first-degree connections.</li>
+      <li>Reveal friends-of-friends as second-degree candidates.</li>
+      <li>Filter the second-degree layer by shared country and/or shared age group.</li>
+      <li>Rank or cap the visible candidates so the interaction stays readable.</li>
+    </ul>
+
+    <h2>Motivation</h2>
+    <p>
+      The motivation remains exactly the same as your original statement: show how existing networks can create new opportunities for connection. The corrected version simply grounds that idea in what the local data can currently support with honesty.
+    </p>
+
+    <h2>Target Audience</h2>
+    <p>
+      The target audience is broad and non-technical. The project should feel more like an intuitive social discovery experience than a researcher dashboard.
+    </p>
+
+    <h2>Exploratory Data Analysis Direction</h2>
+    <ul>
+      <li>Measure degree and second-degree distributions to show how quickly reach expands after one hop.</li>
+      <li>Measure the share of second-degree candidates who also match the ego user on age group and country.</li>
+      <li>Profile a few readable exemplar users to use in the prototype.</li>
+      <li>Use these findings to decide how many candidates to show, how to rank them, and which filters matter most.</li>
+    </ul>
+
+    <h2>Related Work And Originality</h2>
+    <p>
+      Prior Last.fm work is usually recommendation-oriented: users, artists, and tags become features for a model. Our approach is different because the graph itself becomes the story. We are not asking what a user should listen to next; we are asking who becomes meaningfully reachable through one mutual friend.
+    </p>
+    <p>
+      The originality lies in combining the network structure with interpretable shared attributes and presenting the result as a human narrative instead of a machine-learning benchmark.
+    </p>
+
+    <h2>Inspiration</h2>
+    <p>
+      The project is inspired by social network visualizations that keep clusters readable and emphasize meaningful structure, especially Martin Grandjean's work on social graph storytelling. The goal is to adapt that readability to a smaller, more personal question: who is one meaningful hop away from me?
+    </p>
+  </main>
+</body>
+</html>

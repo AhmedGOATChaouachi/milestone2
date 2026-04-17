@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milestone 2 Project Brief</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm;
+    }
+
+    :root {
+      --paper: #fbf8f1;
+      --ink: #1d1d1b;
+      --muted: #555;
+      --accent: #315c52;
+      --accent-soft: #dbe6e1;
+      --line: #d6d0c2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ece7dd;
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      line-height: 1.35;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 10mm auto;
+      padding: 14mm;
+      background: var(--paper);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 8px;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    p, li {
+      font-size: 13.4px;
+      margin: 0 0 8px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .lead {
+      font-size: 15px;
+      max-width: 92%;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #fffdf8;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .sketch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .sketch-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px;
+      background: #fffefb;
+    }
+
+    .sketch-card img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      margin-bottom: 8px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+      padding: 8px;
+    }
+
+    .table th {
+      background: var(--accent-soft);
+      font-weight: 700;
+    }
+
+    .block {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      background: #fffefb;
+      margin-top: 10px;
+    }
+
+    .small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="eyebrow">Milestone 2 / Project Goal</div>
+    <h1>Second-Degree Connection Explorer</h1>
+    <p class="lead">
+      The goal of the final product is to show the hidden value of second-degree connections: not just who a user already knows, but which new people become reachable through one mutual friend and what makes those possible introductions meaningful.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <strong>75,969</strong>
+        <span>connected users</span>
+      </div>
+      <div class="stat">
+        <strong>389,639</strong>
+        <span>unique friendships</span>
+      </div>
+      <div class="stat">
+        <strong>2 hops</strong>
+        <span>core interaction</span>
+      </div>
+      <div class="stat">
+        <strong>Age + country</strong>
+        <span>implemented shared traits</span>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h2>Project Goal</h2>
+        <p>
+          The interface should let someone pick a user, reveal their direct friends, then reveal friends-of-friends and rank them by meaningful overlap. The overlap currently implemented from the local dataset is shared country and shared age group. Music taste remains part of the intended final narrative, but only once a user-level listening table is added.
+        </p>
+        <p>
+          This framing keeps the graph as the story rather than background data. The visual output is not a recommendation list, and not a generic social graph. It is a concrete answer to a social question: who is one meaningful mutual-friend step away from me?
+        </p>
+
+        <h2>Design Intent</h2>
+        <p>
+          The experience should unfold in layers. First the user sees the selected person and their direct connections. Then the second-degree layer appears. Then filters narrow that layer into a manageable subset that shares one or more attributes. This keeps the story readable while preserving the sense that the reachable social space expands dramatically after one hop.
+        </p>
+
+        <h2>Current Data Reality</h2>
+        <p>
+          The corrected milestone makes one important distinction very explicit: the local files support second-degree matching through age group and country right now, but they do not support direct user-level music-taste matching because no user-to-artist listening file is present in the local workspace.
+        </p>
+        <p>
+          Instead of hiding that limitation, the prototype treats it as roadmap information. The music filter is part of the product plan, but not falsely implemented with invented data.
+        </p>
+      </div>
+
+      <div>
+        <h2>Main Analytical Questions</h2>
+        <ul>
+          <li>How much larger is the second-degree layer than the direct-friend layer?</li>
+          <li>How many second-degree candidates still look socially meaningful after filtering by shared age group and/or country?</li>
+          <li>Which exemplar users create readable and convincing interaction scenarios for the prototype?</li>
+        </ul>
+
+        <div class="block">
+          <h3>Prototype story</h3>
+          <ul>
+            <li>Select a user</li>
+            <li>Reveal direct friends</li>
+            <li>Reveal friends-of-friends</li>
+            <li>Filter by shared traits</li>
+            <li>Surface the strongest candidates through mutual-friend count and shared attributes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2>Sketches For The Final Product</h2>
+    <div class="sketch-grid">
+      <div class="sketch-card">
+        <img src="./sketches/dashboard_wireframe.svg" alt="Second-degree explorer wireframe">
+        <p>
+          <strong>Sketch A:</strong> a direct interaction view with ego user, first-degree ring, second-degree ring, attribute filters, and a ranked match panel.
+        </p>
+      </div>
+      <div class="sketch-card">
+        <img src="./sketches/network_story_wireframe.svg" alt="Mutual-friend story wireframe">
+        <p>
+          <strong>Sketch B:</strong> a storytelling version that makes the A-B-C relationship explicit, then explains why candidate C matters through shared traits and mutual-friend strength.
+        </p>
+      </div>
+    </div>
+
+    <p class="small">
+      The current prototype already implements the structural layer, age-group filter, and country filter. Music taste is documented as the next feature once the missing listening-history file is added.
+    </p>
+  </section>
+
+  <section class="page">
+    <div class="eyebrow">Milestone 2 / Production Plan</div>
+    <h1>Tools, Lectures, And Implementation Breakdown</h1>
+
+    <h2>Visualization Modules</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Visualization</th>
+          <th>Tools</th>
+          <th>Lecture support needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ego network with first and second degree rings</td>
+          <td>Python preprocessing, JavaScript SVG rendering, graph utilities</td>
+          <td>Past: graph data basics, visual encoding, layout. Future: force layouts and network readability.</td>
+        </tr>
+        <tr>
+          <td>Attribute filters for age group and country</td>
+          <td>JavaScript UI state, checkbox filters, ranked candidate list</td>
+          <td>Past: interaction design and coordinated views. Future: more advanced filtering logic and usability.</td>
+        </tr>
+        <tr>
+          <td>Ranked second-degree candidate panel</td>
+          <td>Python ranking logic, JavaScript table rendering</td>
+          <td>Past: sorting, overview-plus-detail patterns. Future: storytelling annotations and explanation layers.</td>
+        </tr>
+        <tr>
+          <td>Supporting analysis views for degree and second-degree distributions</td>
+          <td>Python preprocessing, SVG bar charts, notebook-based EDA</td>
+          <td>Past: histograms, distributions, preprocessing. Future: performance tuning and linked interaction.</td>
+        </tr>
+        <tr>
+          <td>Planned music-taste matching</td>
+          <td>User listening table plus ArtistTags/ArtistsMap enrichment</td>
+          <td>Future: data integration, multi-table joins, richer recommendation-style feature engineering.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Independent Implementation Pieces</h2>
+    <div class="block">
+      <h3>Minimal viable product</h3>
+      <ul>
+        <li>Select a user from a set of exemplar ego nodes.</li>
+        <li>Show direct and second-degree connections in a readable layout.</li>
+        <li>Filter second-degree candidates by shared country and age group.</li>
+        <li>Rank visible candidates by mutual friends and shared attributes.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Independent core pieces</h3>
+      <ul>
+        <li>Network cleaning and two-hop expansion logic.</li>
+        <li>Age-group and country preprocessing.</li>
+        <li>Case selection for readable prototype scenarios.</li>
+        <li>Prototype UI shell with filters, graph view, and ranked list.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Stretch ideas that can be dropped safely</h3>
+      <ul>
+        <li>Music-taste filter once user listening data is added locally.</li>
+        <li>Force-directed or community-aware layout instead of ring layout.</li>
+        <li>AND/OR logic builder for compound filtering.</li>
+        <li>Animated storytelling mode that walks from A to B to C.</li>
+      </ul>
+    </div>
+
+    <h2>Prototype Review Status</h2>
+    <p>
+      The current prototype is already running as a real second-degree explorer. It includes a user selector, filter controls, a network view, summary cards, and a ranked list of second-degree candidates. The prototype is powered by real processed data, not mock values.
+    </p>
+    <p>
+      The prototype also exposes the product boundary honestly: age-group and country matching are live, while music-taste matching is visible as a planned extension rather than being faked.
+    </p>
+
+    <p class="small">
+      Deliverables included in this milestone folder: printable brief, network-focused SVG sketches, processed analysis export, executed deep-analysis notebook, and the first functional website skeleton.
+    </p>
+  </section>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#F5F0E8"/>
+  <rect x="28" y="24" width="1224" height="82" rx="20" fill="#FFFDF8" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="56" y="58" fill="#1B1B1B" font-size="30" font-family="Georgia, serif">Second-Degree Connection Explorer</text>
+  <text x="56" y="84" fill="#5A5A5A" font-size="16" font-family="Georgia, serif">Select one user, reveal their network, then filter friends-of-friends by shared attributes.</text>
+
+  <rect x="28" y="126" width="308" height="566" rx="24" fill="#FFFDF8" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="54" y="164" fill="#1B1B1B" font-size="22" font-family="Georgia, serif">Controls</text>
+  <rect x="54" y="184" width="256" height="56" rx="14" fill="#ECE2D3" stroke="#1B1B1B" stroke-width="1.5"/>
+  <text x="72" y="218" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">Choose exemplar user</text>
+  <rect x="54" y="262" width="256" height="160" rx="14" fill="#ECE2D3" stroke="#1B1B1B" stroke-width="1.5"/>
+  <text x="72" y="294" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">Filters</text>
+  <text x="72" y="326" fill="#5A5A5A" font-size="15" font-family="Courier New, monospace">[x] same country</text>
+  <text x="72" y="356" fill="#5A5A5A" font-size="15" font-family="Courier New, monospace">[x] same age group</text>
+  <text x="72" y="386" fill="#B26A3F" font-size="15" font-family="Courier New, monospace">[ ] same music taste</text>
+  <text x="72" y="406" fill="#B26A3F" font-size="13" font-family="Courier New, monospace">planned: needs listening file</text>
+
+  <rect x="54" y="444" width="256" height="212" rx="14" fill="#ECE2D3" stroke="#1B1B1B" stroke-width="1.5"/>
+  <text x="72" y="476" fill="#1B1B1B" font-size="16" font-family="Courier New, monospace">Summary cards</text>
+  <text x="72" y="512" fill="#5A5A5A" font-size="15" font-family="Courier New, monospace">Direct friends</text>
+  <text x="222" y="512" fill="#1B1B1B" font-size="18" font-family="Courier New, monospace">14</text>
+  <text x="72" y="546" fill="#5A5A5A" font-size="15" font-family="Courier New, monospace">2nd degree total</text>
+  <text x="222" y="546" fill="#1B1B1B" font-size="18" font-family="Courier New, monospace">118</text>
+  <text x="72" y="580" fill="#5A5A5A" font-size="15" font-family="Courier New, monospace">Visible after filter</text>
+  <text x="222" y="580" fill="#1B1B1B" font-size="18" font-family="Courier New, monospace">21</text>
+  <text x="72" y="614" fill="#5A5A5A" font-size="15" font-family="Courier New, monospace">Best mutual count</text>
+  <text x="222" y="614" fill="#1B1B1B" font-size="18" font-family="Courier New, monospace">3</text>
+
+  <rect x="360" y="126" width="566" height="566" rx="24" fill="#FFFDF8" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="388" y="164" fill="#1B1B1B" font-size="22" font-family="Georgia, serif">Network view</text>
+  <circle cx="642" cy="408" r="28" fill="#2F6B5D" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="626" y="414" fill="#FFFDF8" font-size="14" font-family="Courier New, monospace">A</text>
+  <circle cx="520" cy="290" r="16" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="472" cy="408" r="16" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="522" cy="526" r="16" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="760" cy="290" r="16" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="808" cy="408" r="16" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="758" cy="526" r="16" fill="#7FA8C6" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="642" y1="408" x2="520" y2="290" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="642" y1="408" x2="472" y2="408" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="642" y1="408" x2="522" y2="526" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="642" y1="408" x2="760" y2="290" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="642" y1="408" x2="808" y2="408" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="642" y1="408" x2="758" y2="526" stroke="#1B1B1B" stroke-width="2"/>
+
+  <circle cx="438" cy="224" r="12" fill="#D98C5F" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="430" cy="592" r="12" fill="#D98C5F" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="852" cy="224" r="12" fill="#D98C5F" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="850" cy="592" r="12" fill="#D98C5F" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="348" cy="408" r="12" fill="#C97B63" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="936" cy="408" r="12" fill="#C97B63" stroke="#1B1B1B" stroke-width="2"/>
+  <line x1="520" y1="290" x2="438" y2="224" stroke="#1B1B1B" stroke-width="1.5"/>
+  <line x1="522" y1="526" x2="430" y2="592" stroke="#1B1B1B" stroke-width="1.5"/>
+  <line x1="760" y1="290" x2="852" y2="224" stroke="#1B1B1B" stroke-width="1.5"/>
+  <line x1="758" y1="526" x2="850" y2="592" stroke="#1B1B1B" stroke-width="1.5"/>
+  <line x1="472" y1="408" x2="348" y2="408" stroke="#1B1B1B" stroke-width="1.5"/>
+  <line x1="808" y1="408" x2="936" y2="408" stroke="#1B1B1B" stroke-width="1.5"/>
+  <text x="388" y="640" fill="#5A5A5A" font-size="14" font-family="Courier New, monospace">Blue = direct friends / orange = filtered 2nd degree candidates</text>
+
+  <rect x="950" y="126" width="302" height="566" rx="24" fill="#FFFDF8" stroke="#1B1B1B" stroke-width="2"/>
+  <text x="978" y="164" fill="#1B1B1B" font-size="22" font-family="Georgia, serif">Ranked candidates</text>
+  <rect x="978" y="188" width="246" height="70" rx="14" fill="#ECE2D3"/>
+  <rect x="978" y="272" width="246" height="70" rx="14" fill="#ECE2D3"/>
+  <rect x="978" y="356" width="246" height="70" rx="14" fill="#ECE2D3"/>
+  <rect x="978" y="440" width="246" height="70" rx="14" fill="#ECE2D3"/>
+  <text x="998" y="216" fill="#1B1B1B" font-size="15" font-family="Courier New, monospace">User C1</text>
+  <text x="998" y="236" fill="#5A5A5A" font-size="13" font-family="Courier New, monospace">same country + same age</text>
+  <text x="998" y="252" fill="#5A5A5A" font-size="13" font-family="Courier New, monospace">3 mutual friends</text>
+  <text x="998" y="300" fill="#1B1B1B" font-size="15" font-family="Courier New, monospace">User C2</text>
+  <text x="998" y="320" fill="#5A5A5A" font-size="13" font-family="Courier New, monospace">same country</text>
+  <text x="998" y="336" fill="#5A5A5A" font-size="13" font-family="Courier New, monospace">2 mutual friends</text>
+</svg>
