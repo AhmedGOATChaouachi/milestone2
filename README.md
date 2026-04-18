@@ -1,2 +1,112 @@
-# milestone2
-Milestone 2 in Data Visualization (COM-480)
+# Second-Degree Connection Explorer
+
+**COM-480 Data Visualization — EPFL**
+Ahmed Chaouachi (346447) · Shin Urech (327245) · Joyti Goel (325374)
+
+An interactive D3.js visualization that answers: *"Who is one meaningful mutual-friend step away from me — and why?"*
+
+Built on the [Last.fm UK User Graph dataset](https://zenodo.org/records/10694369) (75,969 users · 389,639 friendships).
+
+---
+
+## View the site
+
+### Option 1 — Open locally (no server needed)
+
+```bash
+open docs/index.html        # macOS
+start docs/index.html       # Windows
+xdg-open docs/index.html    # Linux
+```
+
+Any modern browser works. No install step required.
+
+### Option 2 — Deploy with GitHub Pages
+
+1. Go to your repo on GitHub → **Settings → Pages**
+2. Under *Build and deployment*:
+   - Source: **Deploy from a branch**
+   - Branch: `main`
+   - Folder: `/docs`
+3. Save → wait ~60 seconds
+4. Your site is live at `https://<your-username>.github.io/milestone2/`
+
+### Option 3 — Local dev server
+
+```bash
+cd docs && python3 -m http.server 8080
+# Then open http://localhost:8080
+```
+
+---
+
+## Project structure
+
+```
+milestone2/
+├── docs/                  ← Live site (GitHub Pages deploys from here)
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js             ← D3.js force-directed graph + all rendering logic
+│   └── data.js            ← Dataset bundle (window.MILESTONE_DATA)
+├── data/                  ← Raw dataset files
+│   ├── network            ← Friendship edge list (75,969 nodes, 389,639 edges)
+│   ├── UsersData_anonymized
+│   ├── ArtistsMap
+│   └── Tags
+│   (ArtistTags — 246 MB — excluded from git; download from Zenodo)
+├── src/                   ← Python processing utilities
+│   ├── music_data_utils.py
+│   ├── second_degree_utils.py
+│   └── build_music_eda_notebook.py
+├── milestone1/            ← Milestone 1 submission + EDA
+│   ├── Milestone_1_submission.ipynb
+│   └── eda_second_degree.ipynb
+├── milestone2/            ← Milestone 2 deliverables
+│   ├── project_brief.html       ← Printable two-page brief (open in browser)
+│   ├── milestone2_answers.txt   ← Written answers to all M2 questions
+│   ├── analysis.ipynb
+│   └── sketches/                ← SVG wireframes
+├── specs/
+│   ├── Milestone_2.pdf
+│   └── Milestone_3.pdf
+└── CLAUDE.md
+```
+
+---
+
+## What the site does
+
+| Feature | Status |
+|---|---|
+| D3.js force-directed ego network (physics simulation) | Live |
+| Staggered entrance animation (ego → bridges → candidates) | Live |
+| Drag nodes to explore connections | Live |
+| Hover tooltips on nodes | Live |
+| Filter by shared country / age group (AND/OR) | Live |
+| Candidate ranking by score + mutual friends | Live |
+| Bridge friend spotlight | Live |
+| 6 animated D3 atlas charts | Live |
+| Music-taste filter | Planned (needs user listening data) |
+
+---
+
+## Dataset
+
+**Last.fm UK User Graph Dataset**
+Source: Zenodo — [10.5281/zenodo.10694369](https://zenodo.org/records/10694369)
+Published: February 2024, University of Pisa / CNR
+
+`ArtistTags` (246 MB) is excluded from this repo — download from Zenodo if needed.
+
+---
+
+## Rebuild data
+
+```bash
+cd milestone2
+python3 build_milestone2_assets.py    # builds milestone2/data/analysis_summary.json
+python3 build_github_pages_site.py    # copies processed data into docs/data.js
+```
+
+Requires Python 3.10+ with `pandas` and `networkx`.

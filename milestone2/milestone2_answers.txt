@@ -1,0 +1,186 @@
+COM-480 Data Visualization — Milestone 2
+Second-Degree Connection Explorer
+Ahmed Chaouachi (346447), Shin Urech (327245), Joyti Goel (325374)
+Deadline: Friday 17 April 2026, 5 pm
+================================================================================
+
+
+PART 1: TWO A4 PAGES — PROJECT GOAL
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+We are building the Second-Degree Connection Explorer: an interactive network
+visualization that shows not just who a user already knows, but which new people
+become reachable through one mutual friend, and what makes those potential
+introductions meaningful.
+
+The core question the visualization answers is:
+  "Who is one meaningful mutual-friend step away from me — and why?"
+
+The dataset is the Last.fm UK User Graph (Zenodo DOI 10.5281/zenodo.10694369),
+containing 75,969 connected users, 389,639 friendship edges, and per-user
+demographics (age, country, gender).
+
+
+SKETCHES OF THE FINAL PRODUCT
+------------------------------
+Two wireframes are included in milestone2/sketches/:
+
+  dashboard_wireframe.svg
+    The primary view. An ego node sits at the center. A first ring of direct
+    friends (bridge nodes) surrounds it. A second, larger ring shows
+    friends-of-friends (candidate nodes). A sidebar shows attribute filters
+    (country, age group, music taste) and a ranked shortlist of candidates.
+    Clicking a candidate highlights the bridge friends who connect them to
+    the ego user and surfaces shared attributes.
+
+  network_story_wireframe.svg
+    A storytelling mode. A three-panel layout walks the user through the
+    A → B → C relationship explicitly: first showing A (the ego), then
+    expanding to show B (a selected bridge friend), then revealing which C
+    nodes (candidates) B connects to, annotated with why each C matters
+    (shared country, age group, or music taste).
+
+The final product uses a D3.js force-directed layout for the network graph so
+nodes settle naturally while still respecting the ring hierarchy. The design
+language is dark navy (rgb(9,19,33)) with teal (#1aa89d), sky-blue (#6b8ec6),
+and coral (#ef8c59) accent colors for the three node types.
+
+
+TOOLS AND LECTURES
+------------------
+Visualization module               | Tools                            | Lectures
+-----------------------------------|----------------------------------|---------------------------
+D3.js force-directed ego network   | D3 v7 (forceSimulation,          | Past: graph data basics,
+with two-hop expansion             | forceRadial, forceManyBody,      | visual encoding, layout.
+                                   | forceLink, drag behavior)        | Future: force layouts,
+                                   |                                  | network readability.
+                                   |                                  |
+Attribute filter controls          | Vanilla JS UI, checkbox filters, | Past: interaction design,
+(country, age group, music taste)  | AND/OR toggle, range slider      | coordinated views.
+                                   |                                  | Future: filter UX,
+                                   |                                  | usability testing.
+                                   |                                  |
+Ranked candidate panel             | D3 selection + JS DOM,           | Past: sorting, overview-
+(score = mutual friends +          | animated list transitions        | plus-detail patterns.
+shared traits)                     |                                  | Future: explanation layers.
+                                   |                                  |
+Atlas charts (degree distributions,| D3 v7 (scaleBand, scaleLinear,  | Past: histograms,
+second-degree distributions,       | axisBottom, animated bars)       | distributions, colormaps.
+case comparison, country/age       |                                  | Future: linked views,
+breakdowns)                        |                                  | performance tuning.
+                                   |                                  |
+Music-taste filter (planned)       | ArtistTags + ArtistsMap join,    | Future: multi-table data
+                                   | tag-overlap scoring              | integration, feature eng.
+                                   |                                  |
+
+Data preprocessing runs in Python (pandas + NetworkX) via build scripts in
+milestone2/. The output is a single JSON bundle (milestone2/data/analysis_
+summary.json) baked into the browser as a JS global (docs/data.js) so the
+site is fully static — no backend, no server required.
+
+
+INDEPENDENT IMPLEMENTATION PIECES
+----------------------------------
+
+MINIMAL VIABLE PRODUCT (required at the end)
+  1. User selector — pick one of several exemplar ego nodes.
+  2. D3 force-directed network — ego at center, bridges on first ring,
+     candidates on second ring, edges between them.
+  3. Candidate filter — shared country and age group checkboxes with
+     AND/OR logic.
+  4. Candidate ranking — candidates sorted by score (mutual friends +
+     shared trait count).
+  5. Candidate detail panel — click a candidate to see why they matter
+     (who the bridge friend is, which traits are shared).
+  6. Atlas section — six supporting bar charts summarizing the full dataset.
+
+All six MVP pieces are implemented and running in the prototype (docs/).
+
+EXTRA IDEAS (more creative / challenging — can be dropped safely)
+  A. Music-taste filter — compute tag overlap between ego and candidate
+     once a user-level listening table is available. The filter UI slot
+     is already present and labeled as "coming soon".
+
+  B. Animated progressive reveal — instead of showing all nodes at once,
+     animate the expansion: ego appears → bridge ring grows in → candidate
+     ring expands outward. This makes the "one hop" story kinetic.
+
+  C. Force-layout drag — let the user physically pull nodes to inspect
+     overlapping connections. D3's drag behavior is already wired in the
+     prototype.
+
+  D. AND/OR compound filter builder — replace the simple toggle with a
+     visual rule builder so users can construct queries like
+     "same country AND (same age OR music match)".
+
+  E. Community-aware coloring — run a lightweight Louvain partition on the
+     ego's local subgraph and color bridge nodes by community to show
+     which friend clusters connect to which candidate clusters.
+
+  F. Animated storytelling mode — a self-running guided tour (A → B → C)
+     narrated with step-by-step annotation overlays, useful for a screened
+     demo or the Milestone 3 screencast.
+
+  G. Mobile-first layout — the current responsive CSS handles viewports
+     down to 780px, but the force graph needs a smaller canvas and a
+     touch-friendly drag handler for phone screens.
+
+
+PART 2: FUNCTIONAL PROJECT PROTOTYPE REVIEW
+================================================================================
+
+STATUS: LIVE AND RUNNING
+--------------------------
+The initial website is running with the full skeleton of the visualization.
+All MVP pieces listed above are functional.
+
+The site lives in docs/ at the repository root.
+To view it locally, open docs/index.html in any modern browser — no server
+needed.
+
+To deploy via GitHub Pages:
+  Settings → Pages → Branch: main, Folder: /docs
+  The public URL will be: https://ahmedgoatchaouachi.github.io/milestone2/
+
+WHAT IS IMPLEMENTED
+-------------------
+  - Ego network SVG/D3 graph with ring layout, hover states, click-to-focus
+  - Bridge list panel (top 8 bridge friends by bridge count)
+  - Candidate list panel (ranked by score, top-N slider)
+  - Candidate detail panel (bridge path explanation, shared traits)
+  - Attribute filters: same country, same age group (live)
+  - Planned filter slot: music taste (disabled, labeled as planned)
+  - AND/OR filter mode toggle
+  - Stage metrics strip (direct count, two-hop pool, visible count, active focus)
+  - Storyline cards (A/B/C narrative)
+  - Hero overview strip (dataset stats)
+  - Atlas section with six charts
+  - Responsive layout (down to 780px)
+  - Smooth hover transitions and graph interaction states
+
+WHAT IS NOT YET IMPLEMENTED (honest scope boundary)
+---------------------------------------------------
+  - Music-taste filtering: requires a user-to-artist listening table that
+    is not present in the local workspace. The ArtistTags and ArtistsMap
+    files contain artist metadata but no per-user listening records.
+    This is documented in the prototype as a planned next step.
+  - D3 force-directed animation: the current graph uses a static ring
+    layout. D3 force simulation with animated transitions is the next
+    planned upgrade (stretch goal B above).
+  - Screencast, process book, final README: these are Milestone 3 items.
+
+DATA NOTES
+----------
+  - Primary dataset: Last.fm UK User Graph, Zenodo 10.5281/zenodo.10694369
+  - 75,969 connected users, 389,639 unique undirected friendships
+  - Median direct-friend degree: 5
+  - Median second-degree reach: 166 (33× expansion in one hop)
+  - 5 exemplar ego users selected for diverse, readable scenarios
+  - ArtistTags (246 MB) is excluded from git — too large for GitHub.
+    It is available in the local workspace for future music-taste work.
+
+================================================================================
+End of Milestone 2 submission document
+================================================================================

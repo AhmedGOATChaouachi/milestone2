@@ -1021,3 +1021,35 @@ input[type="range"] {
     outline-offset: 2px;
   }
 }
+
+/* D3 node tooltip */
+.node-tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(14, 28, 46, 0.96);
+  border: 1px solid rgba(129, 226, 216, 0.22);
+  color: var(--ink);
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  max-width: 220px;
+  transition: opacity 120ms ease;
+}
+
+.node-tooltip strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+
+/* D3 graph animation helpers */
+.g-nodes circle,
+.g-links line {
+  transition: stroke 120ms ease, stroke-width 120ms ease;
+}
