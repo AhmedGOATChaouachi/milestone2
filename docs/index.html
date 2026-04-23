@@ -4,18 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Second-Degree Connection Explorer</title>
-  <link rel="stylesheet" href="./styles.css?v=onehop11">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=v2">
 </head>
 <body>
+
+  <!-- ─── Sticky nav ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <circle cx="11" cy="11" r="10.5" stroke="#1aa89d" stroke-width="1"/>
+          <circle cx="11" cy="11" r="4" fill="#1aa89d"/>
+          <circle cx="4"  cy="11" r="2" fill="#6b8ec6"/>
+          <circle cx="18" cy="11" r="2" fill="#6b8ec6"/>
+          <circle cx="11" cy="4"  r="2" fill="#6b8ec6"/>
+          <circle cx="11" cy="18" r="2" fill="#6b8ec6"/>
+          <line x1="11" y1="11" x2="4"  y2="11" stroke="#6b8ec6" stroke-width="1"/>
+          <line x1="11" y1="11" x2="18" y2="11" stroke="#6b8ec6" stroke-width="1"/>
+          <line x1="11" y1="11" x2="11" y2="4"  stroke="#6b8ec6" stroke-width="1"/>
+          <line x1="11" y1="11" x2="11" y2="18" stroke="#6b8ec6" stroke-width="1"/>
+        </svg>
+        <span>Second-Degree Explorer</span>
+      </a>
+      <div class="nav-links">
+        <a href="#top" class="nav-link">Overview</a>
+        <a href="#explorer" class="nav-link">Explorer</a>
+        <a href="#atlas" class="nav-link">Atlas</a>
+      </div>
+      <button class="nav-story-btn" id="story-mode-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="3,1 13,7 3,13" fill="currentColor"/></svg>
+        Story Mode
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── Story mode overlay ─────────────────────────────────────────────── -->
+  <div class="story-overlay" id="story-overlay" style="display:none">
+    <div class="story-panel">
+      <div class="story-panel-header">
+        <div>
+          <p class="eyebrow">Guided Tour</p>
+          <h2 id="story-panel-title">Introducing the Explorer</h2>
+        </div>
+        <button class="story-close" id="story-close">✕</button>
+      </div>
+      <div class="story-body">
+        <div id="story-visual" class="story-visual"></div>
+        <p id="story-desc" class="story-desc"></p>
+        <div class="story-steps" id="story-step-dots"></div>
+      </div>
+      <div class="story-footer">
+        <button class="story-nav-btn" id="story-prev">← Prev</button>
+        <span id="story-counter" class="story-counter">1 / 5</span>
+        <button class="story-nav-btn primary" id="story-next">Next →</button>
+      </div>
+    </div>
+  </div>
+
   <div class="shell">
+
+    <!-- ─── Hero ───────────────────────────────────────────────────────────── -->
     <header id="top" class="hero panel">
       <div class="hero-main">
-        <p class="eyebrow">Milestone 2 Prototype</p>
-        <h1>See the people you can already reach through one trusted friend.</h1>
+        <p class="eyebrow">Last.fm UK Friendship Graph · COM-480</p>
+        <h1>Who is one<br><em>meaningful step</em><br>away from you?</h1>
         <p class="lead">
-          Explore the second-degree layer around a user and see which bridge friends open the strongest nearby connections.
+          Pick a user. Follow the bridges. Discover which second-degree connections are worth an introduction — and exactly why.
         </p>
         <div id="overview-strip" class="overview-strip"></div>
+        <div class="hero-actions">
+          <a href="#explorer" class="btn-primary">Open Explorer →</a>
+          <a href="#atlas" class="btn-ghost">Data Atlas</a>
+        </div>
       </div>
 
       <aside class="hero-side">
@@ -23,9 +86,7 @@
           <div class="hero-preview-copy">
             <p class="eyebrow">One Hop Away</p>
             <h2>The same orbit drives the whole experience</h2>
-            <p class="note-copy">
-              The hero preview, the main explorer, and the lower analysis all revolve around the same idea: one user at the center, bridge friends on the first ring, and reachable candidates on the second.
-            </p>
+            <p class="note-copy">Ego at center · bridges on the first ring · candidates on the second. Every panel speaks this language.</p>
           </div>
           <div id="hero-visual" class="hero-visual"></div>
         </article>
@@ -39,22 +100,22 @@
       </aside>
     </header>
 
+    <!-- ─── Insights band ──────────────────────────────────────────────────── -->
     <section class="panel narrative-band">
       <div class="section-head">
         <p class="eyebrow">Reading Guide</p>
-        <h2>What the audience should notice first</h2>
+        <h2>What to notice first</h2>
       </div>
       <div id="insight-list" class="insight-list"></div>
     </section>
 
+    <!-- ─── Explorer ──────────────────────────────────────────────────────── -->
     <section id="explorer" class="panel explorer-panel">
       <div class="explorer-head">
         <div class="explorer-copy">
-          <p class="eyebrow">Interactive Prototype</p>
+          <p class="eyebrow">Interactive Explorer</p>
           <h2 id="stage-title">From one person to a reachable neighborhood</h2>
-          <p class="explorer-lead">
-            Select a user, filter the second ring, and follow how bridges and candidates respond together.
-          </p>
+          <p class="explorer-lead">Select a user, filter the second ring, and follow how bridges and candidates respond together.</p>
         </div>
         <div id="stage-metrics" class="stage-metrics"></div>
       </div>
@@ -110,7 +171,7 @@
       <div class="graph-stage-grid">
         <div class="graph-wrap">
           <div id="graph" class="graph"></div>
-          <div id="graph-hint" class="graph-hint"></div>
+          <div id="graph-hint" class="graph-hint">← Hover or click any node to explore connections</div>
         </div>
 
         <aside class="graph-side">
@@ -151,13 +212,12 @@
       </div>
     </section>
 
+    <!-- ─── Atlas header ───────────────────────────────────────────────────── -->
     <section id="atlas" class="panel atlas-header">
       <div class="atlas-copy">
         <p class="eyebrow">Data Atlas</p>
         <h2>What the full graph says beyond the interactive cases</h2>
-        <p class="note-copy">
-          The explorer focuses on exemplar ego users. This section keeps the same story but zooms out: how large the second ring becomes, where shared-trait overlap actually appears, and how the selected case compares with the broader dataset.
-        </p>
+        <p class="note-copy">The explorer focuses on exemplar ego users. This section zooms out: how large the second ring becomes, where shared-trait overlap appears, and how the selected case compares with the broader dataset.</p>
       </div>
       <div class="atlas-side">
         <div id="atlas-focus" class="atlas-focus"></div>
@@ -214,11 +274,52 @@
         <div id="chart-countries" class="chart"></div>
       </article>
     </section>
-  </div>
+
+    <!-- ─── Footer ─────────────────────────────────────────────────────────── -->
+    <footer class="site-footer">
+      <p>COM-480 Data Visualization · EPFL · Ahmed Chaouachi · Shin Urech · Joyti Goel</p>
+      <p class="footer-note">Built on the <a href="https://zenodo.org/records/10694369" target="_blank" rel="noopener">Last.fm UK User Graph</a> · 75,969 users · 389,639 friendships · D3.js v7</p>
+    </footer>
+
+  </div><!-- /.shell -->
 
   <div id="tooltip" class="node-tooltip" style="display:none"></div>
+
+  <!-- Tweaks panel -->
+  <div class="tweaks-panel" id="tweaks-panel" style="display:none">
+    <div class="tweaks-header">
+      <strong>Tweaks</strong>
+      <button class="tweaks-close" id="tweaks-close">✕</button>
+    </div>
+    <label class="tweak-row">
+      <span>Graph physics strength</span>
+      <input type="range" id="tweak-charge" min="50" max="400" value="220" step="10">
+    </label>
+    <label class="tweak-row">
+      <span>Node size scale</span>
+      <input type="range" id="tweak-nodesize" min="0.6" max="1.6" value="1" step="0.1">
+    </label>
+    <label class="tweak-row">
+      <span>Show ring labels</span>
+      <input type="checkbox" id="tweak-ringlabels" checked>
+    </label>
+    <label class="tweak-row">
+      <span>Dim unrelated links</span>
+      <input type="checkbox" id="tweak-dimlinks" checked>
+    </label>
+    <div class="tweak-row">
+      <span>Accent theme</span>
+      <div class="tweak-themes" id="tweak-themes">
+        <button class="theme-dot active" data-theme="default" style="background:#1aa89d" title="Default teal"></button>
+        <button class="theme-dot" data-theme="violet" style="background:#7a70d8" title="Violet"></button>
+        <button class="theme-dot" data-theme="coral" style="background:#ef8c59" title="Coral"></button>
+        <button class="theme-dot" data-theme="amber" style="background:#d9a64f" title="Amber"></button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="./data.js?v=onehop11"></script>
-  <script src="./app.js?v=onehop11"></script>
+  <script src="./data.js?v=v2"></script>
+  <script src="./app.js?v=v2"></script>
 </body>
 </html>

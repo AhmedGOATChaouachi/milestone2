@@ -53,8 +53,8 @@ milestone2/
 │   ├── network            ← Friendship edge list (75,969 nodes, 389,639 edges)
 │   ├── UsersData_anonymized
 │   ├── ArtistsMap
-│   └── Tags
-│   (ArtistTags — 246 MB — excluded from git; download from Zenodo)
+│   ├── Tags
+│   └── ArtistTags         ← 246 MB — excluded from git; download from Zenodo
 ├── src/                   ← Python processing utilities
 │   ├── music_data_utils.py
 │   ├── second_degree_utils.py
@@ -62,11 +62,13 @@ milestone2/
 ├── milestone1/            ← Milestone 1 submission + EDA
 │   ├── Milestone_1_submission.ipynb
 │   └── eda_second_degree.ipynb
-├── milestone2/            ← Milestone 2 deliverables
+├── milestone2/            ← Milestone 2 deliverables + build scripts
 │   ├── project_brief.html       ← Printable two-page brief (open in browser)
 │   ├── milestone2_answers.txt   ← Written answers to all M2 questions
 │   ├── analysis.ipynb
-│   └── sketches/                ← SVG wireframes
+│   ├── build_milestone2_assets.py ← Regenerates milestone2/data/analysis_summary.json
+│   ├── sketches/                ← SVG wireframes
+│   └── design_history/          ← Prototype screenshots
 ├── specs/
 │   ├── Milestone_2.pdf
 │   └── Milestone_3.pdf
@@ -104,9 +106,10 @@ Published: February 2024, University of Pisa / CNR
 ## Rebuild data
 
 ```bash
-cd milestone2
-python3 build_milestone2_assets.py    # builds milestone2/data/analysis_summary.json
-python3 build_github_pages_site.py    # copies processed data into docs/data.js
+# From repo root:
+python3 milestone2/build_milestone2_assets.py   # writes milestone2/data/analysis_summary.json
+# Then update docs/data.js manually from the JSON output
 ```
 
 Requires Python 3.10+ with `pandas` and `networkx`.
+`data/ArtistTags` (246 MB) must be present locally for the music-taste analysis; it is excluded from git.

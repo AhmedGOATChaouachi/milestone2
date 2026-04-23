@@ -1,7 +1,12 @@
 .DS_Store
+**/.DS_Store
 __pycache__/
 *.pyc
+*.ipynb_checkpoints
+.ipynb_checkpoints/
 
-# Large data file excluded from git (246 MB — link to cloud storage for M3)
+# graphify temp artifacts
+graphify-out/
+
+# Large data file excluded from git (246 MB — download from Zenodo for music-taste work)
 data/ArtistTags
-dataViz/ArtistTags
